@@ -1,0 +1,27 @@
+language: node_js
+
+node_js:
+   "8.9.4"
+
+cache:
+  directories:
+    - node_modules
+  yarn: true
+
+install:
+  - yarn install
+
+script:
+ - yarn lint
+ - yarn build
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: dist
+  github_token: $GITHUB_TOKEN
+  email: hrupanjan@gmail.com
+  name: Rupanjan Hari
+  target-branch: master
+  on:
+    branch: development
