@@ -8,5 +8,5 @@ Please be careful when you are taking a look. 😬
 
 ## Build Status
 
-[![Build Status](https://travis-ci.org/hRupanjan/hRupanjan.github.io.svg?branch=master)](https://travis-ci.org/hRupanjan/hRupanjan.github.io)
+[![Build Status](https://travis-ci.org/hRupanjan/hRupanjan.github.io.svg?branch=development)](https://travis-ci.org/hRupanjan/hRupanjan.github.io)
 
