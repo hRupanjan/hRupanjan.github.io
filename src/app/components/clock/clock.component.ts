@@ -9,14 +9,14 @@ export class ClockComponent implements OnDestroy {
   @Input() timeZone: string;
   @Input() dim: string;
 
-  private deg: number = 6;
-  public hr_str: string;
-  public mn_str: string;
-  public sc_str: string;
+  private deg = 6;
+  public hrStr: string;
+  public mnStr: string;
+  public scStr: string;
 
-  private hr: number = 5;
-  private mn: number = 6;
-  private sc: number = 4;
+  private hr: number;
+  private mn: number;
+  private sc: number;
 
   private interval: any;
 
@@ -30,19 +30,17 @@ export class ClockComponent implements OnDestroy {
 
   public updateTime() {
     this.timeZone = this.timeZone ? this.timeZone : Intl.DateTimeFormat().resolvedOptions().timeZone;
-    let today: Date = this.currentTimeAtTZ(this.timeZone);
+    const today: Date = this.currentTimeAtTZ(this.timeZone);
     this.hr = today.getHours() * 30;
     this.mn = today.getMinutes() * this.deg;
     this.sc = today.getSeconds() * this.deg;
-    this.hr_str = `rotateZ(${this.hr + this.mn / 12}deg)`;
-    this.mn_str = `rotateZ(${this.mn}deg)`;
-    this.sc_str = `rotateZ(${this.sc}deg)`;
+    this.hrStr = `rotateZ(${this.hr + this.mn / 12}deg)`;
+    this.mnStr = `rotateZ(${this.mn}deg)`;
+    this.scStr = `rotateZ(${this.sc}deg)`;
   }
 
   public currentTimeAtTZ(tZ: string): Date {
-    let today: Date = new Date();
-    let date: Date = new Date(today.toLocaleString('en-US', { timeZone: tZ }));
-    return date;
+    return new Date(new Date().toLocaleString('en-US', { timeZone: tZ }));
   }
 
 

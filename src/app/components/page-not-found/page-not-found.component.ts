@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
     template: "<span>Page Not Found</span>"
 })
 
-export class PageNotFoundComponent{
+export class PageNotFoundComponent {
 
 }

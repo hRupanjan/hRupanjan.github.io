@@ -6,7 +6,7 @@ import * as moment from 'moment-timezone';
   templateUrl: './world-clock-container.component.html',
 })
 export class WorldClockComponent {
-  public defaultTimeZone: string = '';
-  dimension: string = "400px";
+  public defaultTimeZone = '';
+  dimension = "300px";
   public timeZones: string[] = moment.tz.names();
 }
