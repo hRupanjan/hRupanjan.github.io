@@ -1,0 +1,16 @@
+
+<div class="nav">
+    <select [(ngModel)]=defaultTimeZone class="select-box">
+        <option *ngFor="let timeZone of timeZones" [value]="timeZone">{{ timeZone }}</option>
+    </select>
+
+<div class="world-clock-container">
+
+    
+
+    <clock [timeZone]='defaultTimeZone' [dim]="dimension">
+
+    </clock>
+</div>
+
+</div>
