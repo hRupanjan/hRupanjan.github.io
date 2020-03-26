@@ -1,16 +1,29 @@
+<div class="col clock-page" [ngClass]="defThemeClass">
+    <nav class="row nav">
+        <h2 class="title flex-g-2">World Clock</h2>
+        <select (change)="notifyThemeProvider(selectTheme.value)" class="select-box" #selectTheme>
+            <option *ngFor="let theme of themeService.availableThemes" [value]="theme" [selected]="theme == defaultTheme">
+                {{ getThemeName(theme) }}</option>
+        </select>
+        <select [(ngModel)]=defaultTimeZone class="select-box margin-lr-auto">
+            <option *ngFor="let timeZone of timeZones" [value]="timeZone">{{ timeZone }}</option>
+        </select>
+    </nav>
+    <section class="row world-clock-container" style="flex-basis: 100%;">
+        <clock [timeZone]='defaultTimeZone' [dim]="dimension">
 
-<div class="nav">
-    <select [(ngModel)]=defaultTimeZone class="select-box">
-        <option *ngFor="let timeZone of timeZones" [value]="timeZone">{{ timeZone }}</option>
-    </select>
+        </clock>
+    </section>
+    <section class="row multi-clock-container">
+        <div class="flex-g-1" *ngFor="let clock of clocks">
+            <clock [timeZone]='clock.timeZone' [dim]="clock.dim">
 
-<div class="world-clock-container">
-
-    
-
-    <clock [timeZone]='defaultTimeZone' [dim]="dimension">
-
-    </clock>
-</div>
-
+            </clock>
+        </div>
+        <div class="add-clock-container">
+            <button type="button" class="btn square-btn">
+                <i class="material-icons">add</i>
+            </button>
+        </div>
+    </section>
 </div>

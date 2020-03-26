@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ClockComponent } from './components/clock/clock.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ThemeService } from './providers/theme.service';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ThemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

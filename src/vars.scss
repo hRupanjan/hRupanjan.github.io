@@ -1,9 +1,75 @@
 /* Font Stack */
-$font-stack:    Arial, Helvetica, sans-serif;
+$font-stack: Arial, Helvetica, sans-serif;
+$font-stack-three: "Roboto", sans-serif;
+$font-stack-four: 'Baloo Chettan 2', cursive;
 $font-stack-two: Verdana, Geneva, Tahoma, sans-serif;
+$current-font-family: $font-stack-four;
 
 /* Color Stack */
-$neumorph-dark-bg-color: #363636;
-$neumorph-dark-shadow-color: #656565;
-$neumorph-dark-shadow-dark-color: #1A0000;
 
+:root{
+    --dark-bg-color: #363636;
+    --dark-text-color: #ffffff;
+    --dark-highlight-color: #3f3f3f;
+    --dark-shadow-color: #2d2d2d;
+    --dark-soft-touch-bg-active: linear-gradient(145deg, #313131, #3a3a3a);
+    --dark-soft-touch-bg-normal: linear-gradient(145deg, #3a3a3a, #313131);
+
+    --light-bg-color: #d6d6d6;
+    --light-text-color: #000000;
+    --light-highlight-color: #f8f8f8;
+    --light-shadow-color: #b4b4b4;
+    --light-soft-touch-bg-active: linear-gradient(145deg, #c1c1c1, #e5e5e5);
+    --light-soft-touch-bg-normal: linear-gradient(145deg, #e5e5e5, #c1c1c1);
+
+    --peach-bg-color: #affaad;
+    --peach-text-color: #000000;
+    --peach-highlight-color: #cbffc9;
+    --peach-shadow-color: #93d291;
+    --peach-soft-touch-bg-active: linear-gradient(145deg, #9ee19c, #bbffb9);
+    --peach-soft-touch-bg-normal: linear-gradient(145deg, #bbffb9, #9ee19c);
+
+    --seafoam-bg-color: #71eeb8;
+    --seafoam-text-color: #ffffff;
+    --seafoam-highlight-color: #83ffd5;
+    --seafoam-shadow-color: #5fc89b;
+    --seafoam-soft-touch-bg-active: linear-gradient(145deg, #66d6a6, #79ffc5);
+    --seafoam-soft-touch-bg-normal: linear-gradient(145deg, #79ffc5, #66d6a6);
+}
+
+.dark-theme{
+    --bg: var(--dark-bg-color);
+    --highlight-color: var(--dark-highlight-color);
+    --shadow-color: var(--dark-shadow-color);
+    --text-color: var(--dark-text-color);
+    --soft-touch-bg-active: var(--dark-soft-touch-bg-active);
+    --soft-touch-bg-normal: var(--dark-soft-touch-bg-normal);
+}
+
+.light-theme{
+    --bg: var(--light-bg-color);
+    --highlight-color: var(--light-highlight-color);
+    --shadow-color: var(--light-shadow-color);
+    --text-color: var(--light-text-color);
+    --soft-touch-bg-active: var(--light-soft-touch-bg-active);
+    --soft-touch-bg-normal: var(--light-soft-touch-bg-normal);
+}
+
+.peach-theme{
+    --bg: var(--peach-bg-color);
+    --highlight-color: var(--peach-highlight-color);
+    --shadow-color: var(--peach-shadow-color);
+    --text-color: var(--peach-text-color);
+    --soft-touch-bg-active: var(--peach-soft-touch-bg-active);
+    --soft-touch-bg-normal: var(--peach-soft-touch-bg-normal);
+}
+
+
+.seafoam-theme{
+    --bg: var(--seafoam-bg-color);
+    --highlight-color: var(--seafoam-highlight-color);
+    --shadow-color: var(--seafoam-shadow-color);
+    --text-color: var(--seafoam-text-color);
+    --soft-touch-bg-active: var(--seafoam-soft-touch-bg-active);
+    --soft-touch-bg-normal: var(--seafoam-soft-touch-bg-normal);
+}

@@ -1,0 +1,87 @@
+@import "./vars.scss";
+/* Style Framework */
+
+.row {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+@for $i from 1 through 6 {
+  .flex-g-#{$i} {
+    flex-grow: $i;
+  }
+  .flex-s-#{$i} {
+    flex-shrink: $i;
+  }
+}
+
+$i: 5;
+@while $i <= 50 {
+  .p-#{$i} {
+    padding: #{$i}px !important;
+  }
+  $i: $i + 10;
+}
+
+.row-x-centered {
+  justify-content: center;
+}
+
+.row-y-centered {
+  align-items: center;
+}
+
+.col-x-centered {
+  align-items: center;
+}
+
+.col-y-centered {
+  justify-content: center;
+}
+
+.center-all {
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 570px) {
+  .margin-lr-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@mixin neumorphic-flat($x, $y, $blur, $highlight-color, $shadow-color) {
+  box-shadow: $x $y $blur $shadow-color, -#{$x} -#{$y} $blur $highlight-color;
+}
+
+@mixin neumorphic-inset($x, $y, $blur, $highlight-color, $shadow-color) {
+  box-shadow: inset $x $y $blur $shadow-color, inset -#{$x} -#{$y} $blur $highlight-color;
+}
+
+@mixin neumorphic-oval($x, $y, $blur, $highlight-color, $shadow-color) {
+  background: var(--soft-touch-bg-normal);
+  box-shadow: $x $y $blur $shadow-color, -#{$x} -#{$y} $blur $highlight-color;
+}
+
+@mixin neumorphic-pressed($x, $y, $blur, $highlight-color, $shadow-color) {
+  background: var(--soft-touch-bg-active);
+  box-shadow: $x $y $blur $shadow-color, -#{$x} -#{$y} $blur $highlight-color;
+}
+
+@mixin appearance($value) {
+  -webkit-appearance: $value;
+  -moz-appearance: $value;
+  appearance: $value;
+}
