@@ -1,8 +1,9 @@
 <div class="col clock-page" [ngClass]="defThemeClass">
     <nav class="row nav">
-        <h2 class="title flex-g-2">World Clock</h2>
+        <h1 class="title flex-g-2">World Clock</h1>
         <select (change)="notifyThemeProvider(selectTheme.value)" class="select-box" #selectTheme>
-            <option *ngFor="let theme of themeService.availableThemes" [value]="theme" [selected]="theme == defaultTheme">
+            <option *ngFor="let theme of themeService.availableThemes" [value]="theme"
+                [selected]="theme == defaultTheme">
                 {{ getThemeName(theme) }}</option>
         </select>
         <select [(ngModel)]=defaultTimeZone class="select-box margin-lr-auto">
@@ -16,12 +17,19 @@
     </section>
     <section class="row multi-clock-container">
         <div class="flex-g-1" *ngFor="let clock of clocks">
-            <clock [timeZone]='clock.timeZone' [dim]="clock.dim">
+            <div class="clock-overlay">
+                <clock [timeZone]='clock.timeZone' [dim]="clock.dim">
 
-            </clock>
+                </clock>
+                <div class="row" style="justify-content: center;">
+                    <button type="button" class="btn round-btn btn-30 menu-btn" (click)='deleteClock(clock.id)'>
+                        <i class="material-icons">delete</i>
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="add-clock-container">
-            <button type="button" class="btn square-btn">
+            <button type="button" class="btn rounded-corner-btn btn-50" (click)="onAddBtnClick()">
                 <i class="material-icons">add</i>
             </button>
         </div>

@@ -6,29 +6,29 @@ import { Theme } from '../models/enums';
     providedIn: 'root',
 })
 export class ThemeService {
-    private onCurrentThemeChange: BehaviorSubject<Theme> = new BehaviorSubject<Theme>(Theme.SeaFoam);
+    private onCurrentThemeChange: BehaviorSubject<Theme> = new BehaviorSubject<Theme>(Theme.Dark);
     public currentTheme$: Observable<Theme> = this.onCurrentThemeChange.asObservable();
 
     public availableThemes: Array<Theme> = [Theme.Light, Theme.Dark, Theme.SeaFoam];
 
-    public getThemeClass(theme: Theme): String {
-        let defaultTheme: String = "dark-theme";
+    public getThemeClass(theme: Theme): string {
+        let defaultTheme = 'dark-theme';
 
         switch (Theme[theme]) {
             case Theme[Theme.Light]:
-                defaultTheme = "light-theme";
+                defaultTheme = 'light-theme';
                 break;
             case Theme[Theme.Dark]:
-                defaultTheme = "dark-theme";
+                defaultTheme = 'dark-theme';
                 break;
             case Theme[Theme.Peach]:
-                defaultTheme = "peach-theme";
+                defaultTheme = 'peach-theme';
                 break;
             case Theme[Theme.SeaFoam]:
-                defaultTheme = "seafoam-theme";
+                defaultTheme = 'seafoam-theme';
                 break;
             default:
-                defaultTheme = "dark-theme";
+                defaultTheme = 'dark-theme';
                 break;
         }
 

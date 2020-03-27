@@ -9,7 +9,7 @@ import { Theme } from './models/enums';
 })
 export class AppComponent {
   // public defThemeClass:String = "";
- constructor(private themeService: ThemeService){
+ constructor(private themeService: ThemeService) {
   // themeService.currentTheme$.subscribe((theme)=>{
   //   let defaultTheme:String = themeService.getThemeClass(theme);
   //   this.defThemeClass = defaultTheme;

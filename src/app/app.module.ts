@@ -9,6 +9,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { ClockComponent } from './components/clock/clock.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeService } from './providers/theme.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddClockDialogComponent } from './components/dialogs/add-clock-dialog/add-clock-dialog.component';
+import { MatDialogModule } from '@angular/material';
 
 
 @NgModule({
@@ -17,12 +20,18 @@ import { ThemeService } from './providers/theme.service';
     HomeComponent,
     WorldClockComponent,
     ClockComponent,
+    AddClockDialogComponent,
     PageNotFoundComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule,
+    BrowserAnimationsModule
+  ],
+  entryComponents: [
+    AddClockDialogComponent
   ],
   providers: [ThemeService],
   bootstrap: [AppComponent]

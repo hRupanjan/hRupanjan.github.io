@@ -3,25 +3,26 @@
         <div class="clock-bg">
             <div class="hour">
                 <div class="hr-handle" [style.transform]="getTransform(hr + mn / 12)">
-    
+
                 </div>
             </div>
             <div class="min">
                 <div class="mn-handle" [style.transform]="getTransform(mn)">
-    
+
                 </div>
             </div>
             <div class="sec">
                 <div class="sc-handle" [style.transform]="getTransform(sc)">
-    
+
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class="time-notifier-container">
         <img [src]="dayTimeAsset" *ngIf="dayTimeAsset" class="time-notifier" />
     </div>
+    <span class="clock-title">{{day}}</span>
     <span class="clock-title">{{timeZone}}</span>
     <span class="error-message" *ngIf="errMessage">{{errMessage}}</span>
 </div>

@@ -14,9 +14,10 @@ export class ClockComponent implements OnDestroy, OnChanges {
   public hr: number;
   public mn: number;
   public sc: number;
+  public day: string;
   public dayTimeAsset: string;
 
-  public errMessage: string = "";
+  public errMessage = '';
 
   private interval: any;
 
@@ -40,22 +41,50 @@ export class ClockComponent implements OnDestroy, OnChanges {
     this.timeZone = this.timeZone ? this.timeZone : Intl.DateTimeFormat().resolvedOptions().timeZone;
     let today: Date;
     try {
-      this.errMessage = "";
+      this.errMessage = '';
       today = this.currentTimeAtTZ(this.timeZone);
-    }
-    catch (err) {
+    } catch (err) {
       this.errMessage = err;
       today = null;
       this.hr = this.mn = this.sc = 0;
-      this.dayTimeAsset = "";
+      this.dayTimeAsset = '';
       this.stopClock();
     }
     if (today) {
       this.hr = today.getHours() * 30;
       this.mn = today.getMinutes() * this.deg;
       this.sc = today.getSeconds() * this.deg;
-      this.dayTimeAsset = today.getHours() >= 12 ? "./assets/images/moon.png" : "./assets/images/sun.png"
+      this.day = this.getDayOfTheWeek(today.getDay());
+      this.dayTimeAsset = today.getHours() >= 12 ? './assets/images/moon.png' : './assets/images/sun.png';
     }
+  }
+
+  public getDayOfTheWeek(dayNum: number): string {
+    let day = '';
+    switch (dayNum) {
+      case 0:
+        day = 'Sunday';
+        break;
+      case 1:
+        day = 'Monday';
+        break;
+      case 2:
+        day = 'Tuesday';
+        break;
+      case 3:
+        day = 'Wednesday';
+        break;
+      case 4:
+        day = 'Thursday';
+        break;
+      case 5:
+        day = 'Friday';
+        break;
+      case 6:
+        day = 'Saturday';
+        break;
+    }
+    return day;
   }
 
   public stopClock(): void {
@@ -75,7 +104,7 @@ export class ClockComponent implements OnDestroy, OnChanges {
   }
 
   public getTimeOfTheDay(): string {
-    return this.hr >= 12 ? "./assets/images/moon.png" : "./assets/images/sun.png";
+    return this.hr >= 12 ? './assets/images/moon.png' : './assets/images/sun.png';
   }
 
 }

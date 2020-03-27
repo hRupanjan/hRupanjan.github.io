@@ -1,0 +1,25 @@
+<div class="modal-overlay" [ngClass]="defThemeClass">
+    <div class="modal modal-small">
+        <div class="row modal-header">
+            <h3 class="flex-g-2" style="margin: auto;">Add a new clock</h3>
+            <button type="button" class="btn rounded-corner-btn modal-close-btn btn-30" style="float: right;"
+                (click)="closeModal()">
+                <i class="material-icons">close</i>
+            </button>
+        </div>
+        <div class="modal-content">
+            <div class="col">
+                <label style="margin: 10px;">Select a timezone you want to see: </label>
+                <select [(ngModel)]=selectedTimeZone class="select-box" style="width: 60%; margin: 10px auto;">
+                    <option *ngFor="let timeZone of timeZones" [value]="timeZone">{{ timeZone }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row modal-footer">
+            <button type="button" class="btn rounded-corner-btn modal-submit-btn" style="margin-left: auto;"
+                [mat-dialog-close]="selectedTimeZone">
+                Submit
+            </button>
+        </div>
+    </div>
+</div>
