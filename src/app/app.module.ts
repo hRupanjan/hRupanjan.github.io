@@ -12,6 +12,8 @@ import { ThemeService } from './providers/theme.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddClockDialogComponent } from './components/dialogs/add-clock-dialog/add-clock-dialog.component';
 import { MatDialogModule } from '@angular/material';
+import { TabIdBaseService, TabIdService, BROWSER_TABS_CONFIG } from './providers/tab-identity.service';
+import { ExtrasStroageService } from './providers/storage/extras-storage.service';
 
 
 @NgModule({
@@ -33,7 +35,39 @@ import { MatDialogModule } from '@angular/material';
   entryComponents: [
     AddClockDialogComponent
   ],
-  providers: [ThemeService],
+  providers: [
+    ThemeService,
+    ExtrasStroageService,
+    {
+      provide: TabIdBaseService,
+      useClass: TabIdService
+    },
+    {
+      provide: BROWSER_TABS_CONFIG,
+      useValue: {
+        icons: {
+          portfolio: {
+            type: 'image/x-icon',
+            href: 'favicon.ico',
+            title: 'Portfolio',
+            isDefault: true
+          },
+          world: {
+            type: 'image/x-icon',
+            href: './assets/images/world.ico',
+            title: 'World Clock',
+          },
+          cross: {
+            type: 'image/x-icon',
+            href: './assets/images/cross.ico',
+            title: 'Page Not Found',
+          }
+        },
+
+        cacheBusting: true
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

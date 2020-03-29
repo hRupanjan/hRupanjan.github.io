@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { Theme } from '../models/enums';
+import { ExtrasStroageService } from './storage/extras-storage.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ThemeService {
-    private onCurrentThemeChange: BehaviorSubject<Theme> = new BehaviorSubject<Theme>(Theme.Dark);
-    public currentTheme$: Observable<Theme> = this.onCurrentThemeChange.asObservable();
+    preSavedTheme: Theme;
+    constructor(private extraStorage: ExtrasStroageService) {
+        this.preSavedTheme = this.extraStorage.getCurrentTheme();
+        this.onCurrentThemeChange = new BehaviorSubject<Theme>(this.preSavedTheme);
+        this.currentTheme$ = this.onCurrentThemeChange.asObservable();
+    }
+    private onCurrentThemeChange: BehaviorSubject<Theme>; // = new BehaviorSubject<Theme>(this.preSavedTheme);
+    public currentTheme$: Observable<Theme>; // = this.onCurrentThemeChange.asObservable();
 
-    public availableThemes: Array<Theme> = [Theme.Light, Theme.Dark, Theme.SeaFoam];
+    public availableThemes: Array<Theme> = [Theme.Light, Theme.Dark, Theme.SeaFoam, Theme.Peach];
 
     public getThemeClass(theme: Theme): string {
         let defaultTheme = 'dark-theme';

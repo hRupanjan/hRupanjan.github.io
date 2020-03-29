@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TabIdBaseService } from 'src/app/providers/tab-identity.service';
 
 
 @Component({
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
 })
 
 export class PageNotFoundComponent {
-
+    constructor(
+        private tabId: TabIdBaseService,
+    ) {
+        this.tabId.apply('cross');
+    }
 }

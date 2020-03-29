@@ -59,6 +59,9 @@ body {
 }
 
 .nav {
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
   & .title {
     color: var(--text-color);
     margin: 15px 20px;
@@ -95,9 +98,9 @@ select.select-box {
 .world-clock-container {
   background: var(--bg);
   color: var(--text-color);
-  height: 600px;
+  // height: 600px;
   justify-content: center;
-  padding: 0px 0px 100px 0px;
+  padding: 100px 0px 100px 0px;
 }
 
 .multi-clock-container {
@@ -124,6 +127,8 @@ select.select-box {
 .clock {
   background: var(--bg);
   border-radius: 50%;
+  border: 2px solid var(--bg);
+  box-sizing: content-box;
   margin: 20px;
   margin-left: auto;
   margin-right: auto;
@@ -132,7 +137,9 @@ select.select-box {
 $i: 100;
 @while $i <= 500 {
   .clock-#{$i} {
-    @include neumorphic-flat(#{$i / 10}px, #{$i / 10}px, #{$i * 2 / 10}px, var(--highlight-color), var(--shadow-color));
+    @include neumorphic-bevel-inset(#{$i / 10}px, #{$i / 10}px, #{$i * 2 / 10}px, var(--highlight-color), var(--shadow-color),
+    #{$i / 30}px, #{$i / 30}px, #{$i * 2 / 30}px, var(--highlight-color), var(--shadow-color)
+    );
   }
 
   $i: $i + 50;
@@ -156,7 +163,7 @@ $i: 100;
     background: #fff;
     box-shadow: 2px 2px 2px gray;
     border-radius: 50%;
-    z-index: 99;
+    z-index: 15;
   }
 
   & .hour,
@@ -248,7 +255,7 @@ $i: 100;
   width: 30px;
   height: 30px;
   margin-bottom: 10px;
-  filter: contrast(20);
+  // filter: contrast(20);
 }
 
 .add-clock-container {
@@ -405,4 +412,13 @@ $i: 10;
 *:before,
 *:after {
   @include box-sizing(border-box);
+}
+
+::-moz-focus-inner {
+  border:0;
+}
+
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 var(--text-color);
 }

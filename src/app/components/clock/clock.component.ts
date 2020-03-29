@@ -1,5 +1,4 @@
 import { Component, Input, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
-import { NumberFormatStyle } from '@angular/common';
 
 @Component({
   selector: 'clock',
@@ -19,21 +18,27 @@ export class ClockComponent implements OnDestroy, OnChanges {
 
   public errMessage = '';
 
-  private interval: any;
+  private interval: number;
 
   constructor() {
-    this.interval = setInterval(() => {
-      this.updateTime();
-    });
+
   }
 
-  ngOnDestroy() { clearInterval(this.interval); }
+  ngOnDestroy() { this.stopClock(); }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.timeZone) {
-      this.interval = setInterval(() => {
-        this.updateTime();
-      });
+      this.stopClock();
+      const err: string = this.checkTimeZone(this.timeZone);
+      if (err === '') {
+        this.interval = setInterval(() => {
+          this.updateTime();
+        });
+      } else {
+        this.errMessage = err;
+        this.hr = this.mn = this.sc = 0;
+        this.dayTimeAsset = '';
+      }
     }
   }
 
@@ -41,22 +46,32 @@ export class ClockComponent implements OnDestroy, OnChanges {
     this.timeZone = this.timeZone ? this.timeZone : Intl.DateTimeFormat().resolvedOptions().timeZone;
     let today: Date;
     try {
-      this.errMessage = '';
       today = this.currentTimeAtTZ(this.timeZone);
+      this.errMessage = '';
     } catch (err) {
-      this.errMessage = err;
-      today = null;
-      this.hr = this.mn = this.sc = 0;
-      this.dayTimeAsset = '';
-      this.stopClock();
+      console.log(err);
     }
     if (today) {
       this.hr = today.getHours() * 30;
       this.mn = today.getMinutes() * this.deg;
       this.sc = today.getSeconds() * this.deg;
       this.day = this.getDayOfTheWeek(today.getDay());
-      this.dayTimeAsset = today.getHours() >= 12 ? './assets/images/moon.png' : './assets/images/sun.png';
+      this.dayTimeAsset = this.getDayTimeAsset(today.getHours());
     }
+  }
+
+  private checkTimeZone(timeZone: string): string {
+    let errMsg = '';
+    try {
+      this.currentTimeAtTZ(this.timeZone);
+    } catch (err) {
+      errMsg = err;
+    }
+    return errMsg;
+  }
+
+  private getDayTimeAsset(hour: number): string {
+    return hour >= 12 ? './assets/images/moon.png' : './assets/images/sun.png';
   }
 
   public getDayOfTheWeek(dayNum: number): string {
@@ -102,9 +117,4 @@ export class ClockComponent implements OnDestroy, OnChanges {
   public getTransform(deg: number): string {
     return `rotateZ(${deg}deg)`;
   }
-
-  public getTimeOfTheDay(): string {
-    return this.hr >= 12 ? './assets/images/moon.png' : './assets/images/sun.png';
-  }
-
 }

@@ -82,6 +82,11 @@ $i: 5;
   box-shadow: $x $y $blur $shadow-color, -#{$x} -#{$y} $blur $highlight-color;
 }
 
+@mixin neumorphic-bevel-inset($x, $y, $blur, $highlight-color, $shadow-color, $x-i, $y-i, $blur-i, $highlight-color-i, $shadow-color-i) {
+  box-shadow: $x $y $blur $shadow-color, -#{$x} -#{$y} $blur $highlight-color,
+  inset $x-i $y-i $blur-i $shadow-color-i, inset -#{$x-i} -#{$y-i} $blur-i $highlight-color-i;
+}
+
 @mixin appearance($value) {
   -webkit-appearance: $value;
   -moz-appearance: $value;
