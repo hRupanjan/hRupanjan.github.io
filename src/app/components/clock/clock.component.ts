@@ -71,7 +71,7 @@ export class ClockComponent implements OnDestroy, OnChanges {
   }
 
   private getDayTimeAsset(hour: number): string {
-    return hour >= 12 ? './assets/images/moon.png' : './assets/images/sun.png';
+    return hour >= 12 ? './assets/images/moon.svg' : './assets/images/sun.svg';
   }
 
   public getDayOfTheWeek(dayNum: number): string {

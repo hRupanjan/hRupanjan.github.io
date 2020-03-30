@@ -57,11 +57,25 @@ $i: 5;
   justify-content: center;
 }
 
-@media only screen and (max-width: 570px) {
+@media only screen and (max-width: 611px) {
   .margin-lr-auto {
     margin-left: auto !important;
     margin-right: auto !important;
   }
+}
+
+@mixin transition-all($time) {
+  transition: all $time;
+  -webkit-transition: all $time;
+  -o-transition: all $time;
+  -moz-transition: all $time;
+}
+
+@mixin transition($prop, $time) {
+  transition: #{$prop} $time;
+  -webkit-transition: #{$prop} $time;
+  -o-transition: #{$prop} $time;
+  -moz-transition: #{$prop} $time;
 }
 
 @mixin neumorphic-flat($x, $y, $blur, $highlight-color, $shadow-color) {
@@ -82,9 +96,20 @@ $i: 5;
   box-shadow: $x $y $blur $shadow-color, -#{$x} -#{$y} $blur $highlight-color;
 }
 
-@mixin neumorphic-bevel-inset($x, $y, $blur, $highlight-color, $shadow-color, $x-i, $y-i, $blur-i, $highlight-color-i, $shadow-color-i) {
-  box-shadow: $x $y $blur $shadow-color, -#{$x} -#{$y} $blur $highlight-color,
-  inset $x-i $y-i $blur-i $shadow-color-i, inset -#{$x-i} -#{$y-i} $blur-i $highlight-color-i;
+@mixin neumorphic-bevel-inset(
+  $x,
+  $y,
+  $blur,
+  $highlight-color,
+  $shadow-color,
+  $x-i,
+  $y-i,
+  $blur-i,
+  $highlight-color-i,
+  $shadow-color-i
+) {
+  box-shadow: $x $y $blur $shadow-color, -#{$x} -#{$y} $blur $highlight-color, inset $x-i $y-i $blur-i $shadow-color-i,
+    inset -#{$x-i} -#{$y-i} $blur-i $highlight-color-i;
 }
 
 @mixin appearance($value) {
@@ -99,3 +124,163 @@ $i: 5;
   box-sizing: $value;
 }
 
+select.select-box {
+  font-family: $current-font-family;
+  height: 40px;
+  border-radius: 10px;
+  padding-left: 10px;
+  border: none;
+  margin: 20px;
+  color: var(--text-color);
+  background: var(--bg);
+  @include neumorphic-flat(4px, 4px, 8px, var(--highlight-color), var(--shadow-color));
+  @include appearance(none);
+  background: url(./assets/images/dropdown-ico.png) right / 20px no-repeat transparent;
+  padding-right: 20px;
+  @include transition-all(0.1s);
+  &:hover{
+    @include neumorphic-flat(#{$i / 20}px, #{$i / 20}px, #{$i * 2 / 20}px, var(--highlight-color), var(--shadow-color));
+  }
+  &:active {
+    outline: 0;
+    @include neumorphic-bevel-inset(2px, 2px, 4px, var(--highlight-color), var(--shadow-color), 
+    4px, 4px, 8px, var(--highlight-color), var(--shadow-color));
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  & option {
+    background-color: var(--bg);
+  }
+}
+
+.btn {
+  border: none;
+  background: var(--bg);
+  @include neumorphic-oval(5px, 5px, 10px, var(--highlight-color), var(--shadow-color));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $current-font-family;
+  @include transition-all(0.2s);
+  &:hover{
+    @include neumorphic-flat(#{$i / 15}px, #{$i / 15}px, #{$i * 2 / 15}px, var(--highlight-color), var(--shadow-color));
+  }
+  &:active {
+    @include neumorphic-pressed(5px, 5px, 10px, var(--highlight-color), var(--shadow-color));
+  }
+  &:focus {
+    outline: 0;
+  }
+  & i {
+    color: var(--text-color);
+  }
+  &.round-btn {
+    border-radius: 50%;
+  }
+  &.rounded-corner-btn {
+    border-radius: 10px;
+  }
+}
+
+$i: 10;
+@while $i <= 60 {
+  .btn-#{$i} {
+    width: #{$i}px;
+    height: #{$i}px;
+    @include transition-all(0.2s);
+    @include neumorphic-oval(#{$i / 10}px, #{$i / 10}px, #{$i * 2 / 10}px, var(--highlight-color), var(--shadow-color));
+    &:hover{
+      @include neumorphic-flat(#{$i / 15}px, #{$i / 15}px, #{$i * 2 / 15}px, var(--highlight-color), var(--shadow-color));
+    }
+    &:active {
+      @include neumorphic-pressed(
+        #{$i / 10}px,
+        #{$i / 10}px,
+        #{$i * 2 / 10}px,
+        var(--highlight-color),
+        var(--shadow-color)
+      );
+    }
+  }
+
+  $i: $i + 10;
+}
+
+.modal-overlay {
+  overflow: unset auto;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  @include transition-all(.3s);
+  & .modal {
+    margin-top: 10%;
+    margin-bottom: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 5px;
+    border: 1px solid var(--bg);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--text-color);
+    &.modal-small {
+      max-width: 40vw;
+    }
+    &.modal-medium {
+      max-width: 50vw;
+    }
+    &.modal.modal-large {
+      max-width: 60vw;
+    }
+
+    @media only screen and (max-width: 570px) {
+      &.modal-small {
+        max-width: 60vw;
+      }
+      &.modal-medium {
+        max-width: 70vw;
+      }
+      &.modal.modal-large {
+        max-width: 80vw;
+      }
+    }
+
+    & .modal-header {
+      width: 95%;
+      border-radius: 10px;
+      padding: 10px 10px;
+      margin: 5px auto;
+      background: var(--bg);
+      @include neumorphic-flat(1px, 1px, 2px, var(--highlight-color), var(--shadow-color));
+    }
+
+    .btn.modal-submit-btn {
+      padding: 10px;
+      color: var(--text-color);
+    }
+
+    & .modal-footer {
+      width: 95%;
+      border-radius: 10px;
+      padding: 5px 10px;
+      margin: 0px auto;
+    }
+
+    & .modal-content {
+      width: 94%;
+      overflow: auto;
+      max-height: 60vh;
+      border-radius: 5px;
+      padding: 5px 10px;
+      margin: 10px auto;
+      background: var(--bg);
+      @include neumorphic-flat(2px, 2px, 4px, var(--highlight-color), var(--shadow-color));
+    }
+  }
+}

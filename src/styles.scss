@@ -69,32 +69,6 @@ body {
   }
 }
 
-select.select-box {
-  font-family: $current-font-family;
-  height: 40px;
-  border-radius: 10px;
-  padding-left: 10px;
-  border: none;
-  margin: 20px;
-  color: var(--text-color);
-  background: var(--bg);
-  @include neumorphic-flat(4px, 4px, 8px, var(--highlight-color), var(--shadow-color));
-  @include appearance(none);
-  background: url(./assets/images/dropdown-ico.png) right / 20px no-repeat transparent;
-  padding-right: 20px;
-  &:active {
-    outline: 0;
-    @include neumorphic-inset(4px, 4px, 8px, var(--highlight-color), var(--shadow-color));
-  }
-  &:focus {
-    outline: 0;
-  }
-
-  & option {
-    background-color: var(--bg);
-  }
-}
-
 .world-clock-container {
   background: var(--bg);
   color: var(--text-color);
@@ -255,7 +229,7 @@ $i: 100;
   width: 30px;
   height: 30px;
   margin-bottom: 10px;
-  // filter: contrast(20);
+  // filter: drop-shadow(3px 3px 6px var(--shadow-color));
 }
 
 .add-clock-container {
@@ -264,143 +238,6 @@ $i: 100;
   align-items: center;
   padding: 93px;
   flex-basis: 100%;
-}
-
-.btn {
-  border: none;
-  background: var(--bg);
-  @include neumorphic-oval(5px, 5px, 10px, var(--highlight-color), var(--shadow-color));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: $current-font-family;
-  &:active {
-    @include neumorphic-pressed(5px, 5px, 10px, var(--highlight-color), var(--shadow-color));
-  }
-  &:focus {
-    outline: 0;
-  }
-  & i {
-    color: var(--text-color);
-  }
-  &.round-btn {
-    border-radius: 50%;
-  }
-  &.rounded-corner-btn {
-    border-radius: 10px;
-  }
-}
-
-$i: 10;
-@while $i <= 60 {
-  .btn-#{$i} {
-    width: #{$i}px;
-    height: #{$i}px;
-    @include neumorphic-oval(#{$i / 10}px, #{$i / 10}px, #{$i * 2 / 10}px, var(--highlight-color), var(--shadow-color));
-
-    &:active {
-      @include neumorphic-pressed(
-        #{$i / 10}px,
-        #{$i / 10}px,
-        #{$i * 2 / 10}px,
-        var(--highlight-color),
-        var(--shadow-color)
-      );
-    }
-  }
-
-  $i: $i + 10;
-}
-
-.modal-overlay {
-  overflow: unset auto;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
-
-  & .modal {
-    margin-top: 10%;
-    margin-bottom: 3%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px 5px;
-    border: 1px solid var(--bg);
-    border-radius: 10px;
-    background: var(--bg);
-    color: var(--text-color);
-    &.modal-small {
-      max-width: 40vw;
-    }
-    &.modal-medium {
-      max-width: 50vw;
-    }
-    &.modal.modal-large {
-      max-width: 60vw;
-    }
-
-    @media only screen and (max-width: 570px) {
-      &.modal-small {
-        max-width: 60vw;
-      }
-      &.modal-medium {
-        max-width: 70vw;
-      }
-      &.modal.modal-large {
-        max-width: 80vw;
-      }
-    }
-
-    & .modal-header {
-      width: 95%;
-      border-radius: 10px;
-      padding: 10px 10px;
-      margin: 5px auto;
-      background: var(--bg);
-      @include neumorphic-flat(1px, 1px, 2px, var(--highlight-color), var(--shadow-color));
-    }
-
-    .btn.modal-close-btn {
-      width: 30px;
-      height: 30px;
-      @include neumorphic-oval(3px, 3px, 6px, var(--highlight-color), var(--shadow-color));
-
-      &:active {
-        @include neumorphic-pressed(3px, 3px, 6px, var(--highlight-color), var(--shadow-color));
-      }
-    }
-
-    .btn.modal-submit-btn {
-      padding: 10px;
-      color: var(--text-color);
-      @include neumorphic-oval(3px, 3px, 6px, var(--highlight-color), var(--shadow-color));
-
-      &:active {
-        @include neumorphic-pressed(3px, 3px, 6px, var(--highlight-color), var(--shadow-color));
-      }
-    }
-
-    & .modal-footer {
-      width: 95%;
-      border-radius: 10px;
-      padding: 5px 10px;
-      margin: 0px auto;
-    }
-
-    & .modal-content {
-      width: 94%;
-      overflow: auto;
-      max-height: 60vh;
-      border-radius: 5px;
-      padding: 5px 10px;
-      margin: 10px auto;
-      background: var(--bg);
-      @include neumorphic-flat(2px, 2px, 4px, var(--highlight-color), var(--shadow-color));
-    }
-  }
 }
 
 /* Material Override*/
