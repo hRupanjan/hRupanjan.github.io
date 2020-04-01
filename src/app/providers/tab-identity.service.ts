@@ -1,4 +1,4 @@
-import { Inject } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { InjectionToken } from '@angular/core';
 
 export interface TabConfig {
@@ -24,6 +24,7 @@ export abstract class TabIdBaseService {
     abstract reset(): void;
 }
 
+@Injectable()
 export class TabIdService implements TabIdBaseService {
 
     private elementId: string;

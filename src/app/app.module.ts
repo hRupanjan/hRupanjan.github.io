@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddClockDialogComponent } from './components/dialogs/add-clock-dialog/add-clock-dialog.component';
 import { MatDialogModule } from '@angular/material';
 import { TabIdBaseService, TabIdService, BROWSER_TABS_CONFIG } from './providers/tab-identity.service';
-import { ExtrasStroageService } from './providers/storage/extras-storage.service';
+import { ExtrasStorageService } from './providers/storage/extras-storage.service';
 
 
 @NgModule({
@@ -37,7 +37,7 @@ import { ExtrasStroageService } from './providers/storage/extras-storage.service
   ],
   providers: [
     ThemeService,
-    ExtrasStroageService,
+    ExtrasStorageService,
     {
       provide: TabIdBaseService,
       useClass: TabIdService

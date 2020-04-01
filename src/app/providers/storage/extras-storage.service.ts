@@ -5,7 +5,7 @@ import { ClockData } from 'src/app/models/clock-data';
 @Injectable({
     providedIn: 'root',
 })
-export class ExtrasStroageService {
+export class ExtrasStorageService {
     setCurrentTheme(theme: Theme) {
         const lS: Storage = this.getStorage();
         if (lS) {

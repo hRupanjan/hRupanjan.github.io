@@ -7,7 +7,7 @@ import { AddClockDialogComponent } from '../dialogs/add-clock-dialog/add-clock-d
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { Guid } from 'guid-typescript';
 import { TabIdBaseService } from 'src/app/providers/tab-identity.service';
-import { ExtrasStroageService } from 'src/app/providers/storage/extras-storage.service';
+import { ExtrasStorageService } from 'src/app/providers/storage/extras-storage.service';
 
 @Component({
   selector: 'world-clock-container',
@@ -27,7 +27,7 @@ export class WorldClockComponent implements OnDestroy {
   constructor(
     public themeService: ThemeService,
     private tabId: TabIdBaseService,
-    private extraStorage: ExtrasStroageService,
+    private extraStorage: ExtrasStorageService,
     private dialog: MatDialog
   ) {
     this.clocks = extraStorage.getClocks();
