@@ -65,17 +65,17 @@ $i: 5;
 }
 
 @mixin transition-all($time) {
-  transition: all $time;
-  -webkit-transition: all $time;
-  -o-transition: all $time;
-  -moz-transition: all $time;
+  transition: all $time linear;
+  -webkit-transition: all $time linear;
+  -o-transition: all $time linear;
+  -moz-transition: all $time linear;
 }
 
 @mixin transition($prop, $time) {
-  transition: #{$prop} $time;
-  -webkit-transition: #{$prop} $time;
-  -o-transition: #{$prop} $time;
-  -moz-transition: #{$prop} $time;
+  transition: #{$prop} $time linear;
+  -webkit-transition: #{$prop} $time linear;
+  -o-transition: #{$prop} $time linear;
+  -moz-transition: #{$prop} $time linear;
 }
 
 @mixin neumorphic-flat($x, $y, $blur, $highlight-color, $shadow-color) {

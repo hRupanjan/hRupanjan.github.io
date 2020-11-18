@@ -55,6 +55,7 @@ body {
 .clock-page {
   font-family: $current-font-family;
   background: var(--bg);
+  @include transition-all(0.3s);
   height: 100vh;
 }
 
@@ -71,6 +72,7 @@ body {
 
 .world-clock-container {
   background: var(--bg);
+  @include transition-all(0.3s);
   color: var(--text-color);
   // height: 600px;
   justify-content: center;
@@ -79,6 +81,7 @@ body {
 
 .multi-clock-container {
   background: var(--bg);
+  @include transition-all(0.3s);
   color: var(--text-color);
   justify-content: space-evenly;
 }
@@ -100,6 +103,7 @@ body {
 
 .clock {
   background: var(--bg);
+  @include transition-all(0.3s);
   border-radius: 50%;
   border: 2px solid var(--bg);
   box-sizing: content-box;
@@ -111,9 +115,22 @@ body {
 $i: 100;
 @while $i <= 500 {
   .clock-#{$i} {
-    @include neumorphic-bevel-inset(#{$i / 10}px, #{$i / 10}px, #{$i * 2 / 10}px, var(--highlight-color), var(--shadow-color),
-    #{$i / 30}px, #{$i / 30}px, #{$i * 2 / 30}px, var(--highlight-color), var(--shadow-color)
+    @include neumorphic-bevel-inset(
+      #{$i / 10}px,
+      #{$i / 10}px,
+      #{$i * 2 / 10}px,
+      var(--highlight-color),
+      var(--shadow-color),
+      #{$i / 30}px,
+      #{$i / 30}px,
+      #{$i * 2 / 30}px,
+      var(--highlight-color),
+      var(--shadow-color)
     );
+  }
+  $ifr: $i * 2 / 1000;
+  .clock-scale-#{$i} {
+    transform: scale(#{$ifr + 0.3});
   }
 
   $i: $i + 50;
@@ -147,18 +164,18 @@ $i: 100;
   }
   & .hour,
   .hr-handle {
-    width: 120px;
-    height: 120px;
+    width: 160px;
+    height: 160px;
   }
   & .min,
   .mn-handle {
-    width: 150px;
-    height: 150px;
+    width: 190px;
+    height: 190px;
   }
   & .sec,
   .sc-handle {
-    width: 190px;
-    height: 190px;
+    width: 230px;
+    height: 230px;
   }
 }
 
@@ -174,8 +191,8 @@ $i: 100;
 .hr-handle:before {
   content: "";
   position: absolute;
-  width: 6px;
-  height: 60px;
+  width: 8px;
+  height: 80px;
   background: #ffffff;
   z-index: 10;
   border-radius: 6px 6px 0 0;
@@ -185,7 +202,7 @@ $i: 100;
   content: "";
   position: absolute;
   width: 4px;
-  height: 70px;
+  height: 90px;
   background: #ffffff;
   z-index: 11;
   border-radius: 6px 6px 0 0;
@@ -195,7 +212,7 @@ $i: 100;
   content: "";
   position: absolute;
   width: 2px;
-  height: 120px;
+  height: 150px;
   background: #ff105e;
   z-index: 12;
   border-radius: 6px 6px 0 0;
@@ -244,15 +261,17 @@ $i: 100;
 .mat-dialog-container {
   padding: 0px !important;
 }
-
+body {
+  @include box-sizing(border-box);
+}
 *,
 *:before,
 *:after {
-  @include box-sizing(border-box);
+  @include box-sizing(inherit);
 }
 
 ::-moz-focus-inner {
-  border:0;
+  border: 0;
 }
 
 select:-moz-focusring {
