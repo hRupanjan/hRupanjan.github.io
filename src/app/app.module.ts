@@ -14,6 +14,7 @@ import { AddClockDialogComponent } from './components/dialogs/add-clock-dialog/a
 import { MatDialogModule } from '@angular/material';
 import { TabIdBaseService, TabIdService, BROWSER_TABS_CONFIG } from './providers/tab-identity.service';
 import { ExtrasStorageService } from './providers/storage/extras-storage.service';
+import { RasaChatComponent } from './components/rasa-chat/rasa-chat.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ExtrasStorageService } from './providers/storage/extras-storage.service
     WorldClockComponent,
     ClockComponent,
     AddClockDialogComponent,
+    RasaChatComponent,
     PageNotFoundComponent
   ],
   imports: [
@@ -56,6 +58,11 @@ import { ExtrasStorageService } from './providers/storage/extras-storage.service
             type: 'image/x-icon',
             href: './assets/images/world.ico',
             title: 'World Clock',
+          },
+          rasaChat: {
+            type: 'image/x-icon',
+            href: './assets/images/rasa-chat.ico',
+            title: 'Rasa Test Bot',
           },
           cross: {
             type: 'image/x-icon',

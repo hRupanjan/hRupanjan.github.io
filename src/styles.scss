@@ -278,3 +278,29 @@ select:-moz-focusring {
   color: transparent;
   text-shadow: 0 0 0 var(--text-color);
 }
+
+.rw-widget-container {
+  * {
+    font-family: $current-font-family !important;
+  }
+  .rw-conversation-container {
+    .rw-header {
+      background-color: hsl(250, 69%, 61%) !important;
+    }
+    .rw-messages-container .rw-message .rw-client {
+      background-color: hsl(250, 69%, 61%) !important;
+    }
+    .rw-reply {
+      background-color: hsl(250, 69%, 61%) !important;
+      border: 1px solid hsl(250, 69%, 61%) !important;
+    }
+    .rw-sender .rw-send .rw-send-icon-ready {
+      fill: hsl(250, 69%, 61%) !important;
+    }
+  }
+
+  .rw-launcher {
+    background-color: hsl(250, 69%, 61%) !important;
+    cursor: pointer;
+  }
+}
